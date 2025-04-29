@@ -92,9 +92,9 @@ namespace League {
     
         for (int i = 0; i < standings.get_size(); i++) 
         {
-            if (i < 3)
+            if (i < 5)
             {
-                if (matchday_count == 18 && i == 0)
+                if (matchday_count == 38 && i == 0)
                 {
                     cout << yellow << left << setw(5) << "C" << reset
                     << setw(25) << standings[i].get_name()
@@ -118,7 +118,7 @@ namespace League {
                 }
                 
             }
-            else if (i > 7)
+            else if (i > 16)
             {
                 cout << red << left << setw(5)<< (i + 1) << reset
                 << setw(25) << standings[i].get_name()
@@ -172,7 +172,7 @@ namespace League {
         while (true)
         {
             cout << "Enter the matchday number to simulate up to ("
-            << matchday_count + 1 << "-" << 18 << "): ";
+            << matchday_count + 1 << "-" << 38 << "): ";
             cout.flush();
     
             cin >> day;
@@ -187,7 +187,7 @@ namespace League {
                 continue;
             }
     
-            if (day <= matchday_count || day > 18)
+            if (day <= matchday_count || day > 38)
             {
                 clear_screen;
                 invalid_msg;
@@ -199,7 +199,7 @@ namespace League {
             }
         }
         
-        for (int i = 0; i < ((day - matchday_count) * 5); i++)
+        for (int i = 0; i < ((day - matchday_count) * 10); i++)
         {
             Match current = fixtures.dequeue();
             simulate_match(current);

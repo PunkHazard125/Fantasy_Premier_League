@@ -115,7 +115,7 @@ int main(void) {
             {
                 clear_screen;
 
-                if (matchday_count == 18)
+                if (matchday_count == 38)
                 {
                     cout << red <<"Season is over! Cannot simulate\n" << reset;
 

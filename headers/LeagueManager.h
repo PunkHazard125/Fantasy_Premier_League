@@ -173,9 +173,37 @@ namespace League {
         }
     
         cout << "======================================================\n";
+
+        if (matchday_count == 38)
+        {
+            if (standings[0].get_name() == "Manchester City")
+            {
+                cout << ln << yellow << "115 charges for a reason!\n" << reset; 
+            }
+            else if (standings[0].get_name() == "Manchester United")
+            {
+                cout << ln << yellow << "CR7 was never wrong!\n" << reset; 
+            }
+            else if (standings[0].get_name() == "Arsenal")
+            {
+                cout << ln << yellow << "Haram tactics finally worked!\n" << reset; 
+            }
+            else if (standings[0].get_name() == "Liverpool")
+            {
+                cout << ln << yellow << "Jurgen Klopp is punching the air right now!\n" << reset; 
+            }
+            else if (standings[0].get_name() == "Chelsea")
+            {
+                cout << ln << yellow << "Billions spent to win a trophy worth millions!\n" << reset; 
+            }
+            else if (standings[0].get_name() == "Tottenham Hotspur")
+            {
+                cout << ln << yellow << "Perhaps Harry Kane really is the cursed one!\n" << reset;
+            }
+        }
     
     }
-    
+
     inline void display_teams() {
 
         cout << "=====================================\n";

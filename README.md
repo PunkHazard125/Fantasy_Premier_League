@@ -11,21 +11,23 @@ A Football League Simulation System that simulates the English Premier League (E
 ### Data Structures:
 - **Dynamic Array/ArrayList**: Used for storing teams in the league.
 - **Stack**: Used for storing match results.
-- **Queue**: Used for storing the upcoming fixtures (matches).
+- **Deque**: Used for storing the upcoming fixtures (matches).
 
 ### Main Structure:
 - **Array/ArrayList of Teams**: Holds all the teams participating in the league.
-- **Queue of Matches (Fixtures)**: Contains the upcoming matches for the league.
+- **Deque of Matches (Fixtures)**: Contains the upcoming matches for the league.
 - **Stack of Results**: Stores the results of completed matches.
 
 ### Functionalities:
 - Simulate the league based on a user-defined number of matchdays.
-- View individual team details after simulation.
-- Undo matchdays but only one matchday at a time
-- Display the final standings of teams in the league after the specified number of matchdays.
+- View individual team details.
+- Undo matchdays
+- Display the standings of teams in the league after the specified number of matchdays.
+- View standings of the previous season after 38 matchdays by default
 
 ### Additional Information:
-- The league will consist of 10 teams from the English Premier League.
+- The league will consist of 20 teams from the 23/24 English Premier League season.
 - Each team will play every other team twice (home and away).
 - Team strengths will be factored into the simulation, giving stronger teams a higher chance of winning but allowing for upsets.
-- Comparator operators will be overloaded to sort teams based on points and goal difference.
+- Comparator operators will be overloaded to sort teams based on points and goal differences.
+- JSON will be used to store and retrieve team information, fixtures and history of the previous season.

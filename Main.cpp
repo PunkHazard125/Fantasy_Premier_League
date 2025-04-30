@@ -2,9 +2,8 @@
 #include "headers/ArrayList.h"
 #include "headers/Stack.h"
 #include "headers/Deque.h"
-#include "headers/Queue.h"
 #include "headers/Football.h"
-#include "headers/LeagueUtils.h"
+#include "headers/LeagueManager.h"
 #include "headers/json.hpp"
 
 using namespace std;

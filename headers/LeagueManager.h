@@ -1,11 +1,10 @@
-#ifndef LEAGUE_UTILS_H
-#define LEAGUE_UTILS_H
+#ifndef LEAGUE_MANAGER_H
+#define LEAGUE_MANAGER_H
 
 #include <bits/stdc++.h>
 #include "ArrayList.h"
 #include "Stack.h"
 #include "Deque.h"
-#include "Queue.h"
 #include "Football.h"
 #include "json.hpp"
 

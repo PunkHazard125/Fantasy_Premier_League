@@ -2,8 +2,10 @@
 #define FOOTBALL_H
 
 #include <bits/stdc++.h>
+#include "json.hpp"
 
 using namespace std;
+using json = nlohmann::json;
 
 typedef long long ll;
 
@@ -61,6 +63,18 @@ public:
 
     }
 
+    Team(string n, int p, int gd, int w, int d, int l) {
+
+        name = n;
+
+        points = p;
+        wins = w;
+        losses =l;
+        draws = d;
+        goal_difference = gd;
+
+    }
+
     Team(const Team& other) {
 
         name = other.name;
@@ -91,6 +105,14 @@ public:
     void set_name(string str) { name = str; }
     void set_id(int num) { team_id = num; }
     void set_strength(int num) { strength = num; }
+    void set_points(int num) { points = num; }
+    void set_wins(int num) { wins = num; }
+    void set_losses(int num) { losses = num; }
+    void set_draws(int num) { draws = num; }
+    void set_goals_scored(int num) { goals_scored = num; }
+    void set_goals_conceded(int num) { goals_conceded = num; }
+    void set_goal_difference(int num) { goal_difference = num; }
+
     void add_win() { 
         
         wins++; 
@@ -113,6 +135,44 @@ public:
     void add_goals_conceded(int num) { 
         
         goals_conceded += num; 
+        goal_difference = goals_scored - goals_conceded;
+    
+    }
+
+    void remove_win() { 
+        
+        if (wins > 0) 
+        {
+            wins--; 
+            points -= 3;
+        }
+    
+    }
+    void remove_loss() { 
+        
+        if (losses > 0) 
+        {
+            losses--; 
+        }
+    
+    }
+    void remove_draw() { 
+        
+        if (draws > 0) {
+            draws--;
+            points -= 1;
+        }
+    
+    }
+    void remove_goals_scored(int num) { 
+        
+        goals_scored = max(0, goals_scored - num);
+        goal_difference = goals_scored - goals_conceded;
+    
+    }
+    void remove_goals_conceded(int num) { 
+        
+        goals_conceded = max(0, goals_conceded - num);
         goal_difference = goals_scored - goals_conceded;
     
     }
@@ -254,5 +314,39 @@ public:
     void set_score_b(int num) { score_b = num; }
 
 };
+
+inline void to_json(json& j, const Team& t) {
+
+    j = json {
+
+        {"team_id", t.get_id()},
+        {"name", t.get_name()},
+        {"strength", t.get_strength()},
+        {"points", t.get_points()},
+        {"wins", t.get_wins()},
+        {"losses", t.get_losses()},
+        {"draws", t.get_draws()},
+        {"goals_scored", t.get_goals_scored()},
+        {"goals_conceded", t.get_goals_conceded()},
+        {"goal_difference", t.get_goal_difference()}
+
+    };
+
+}
+
+inline void from_json(const json& j, Team& t) {
+
+    t.set_id(j.at("team_id").get<int>());
+    t.set_name(j.at("name").get<string>());
+    t.set_strength(j.at("strength").get<int>());
+    t.set_points(j.at("points").get<int>());
+    t.set_wins(j.at("wins").get<int>());
+    t.set_losses(j.at("losses").get<int>());
+    t.set_draws(j.at("draws").get<int>());
+    t.set_goals_scored(j.at("goals_scored").get<int>());
+    t.set_goals_conceded(j.at("goals_conceded").get<int>());
+    t.set_goal_difference(j.at("goal_difference").get<int>());
+
+}
 
 #endif

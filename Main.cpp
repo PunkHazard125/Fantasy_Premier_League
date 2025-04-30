@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 #include "headers/ArrayList.h"
 #include "headers/Stack.h"
+#include "headers/Deque.h"
 #include "headers/Queue.h"
 #include "headers/Football.h"
 #include "headers/LeagueUtils.h"
@@ -19,6 +20,7 @@ int main(void) {
 
     load_teams();
     load_fixtures();
+    load_history();
 
     while (true)
     {
@@ -33,7 +35,8 @@ int main(void) {
         cout << "2. Simulate the League\n";
         cout << "3. View Team Information\n";
         cout << "4. Undo Matchday(s)\n";
-        cout << "5. Exit\n\n";
+        cout << "5. View Standings of Previous Season\n";
+        cout << "6. Exit\n\n";
 
         cout << "Select an option from above: ";
         cout.flush();
@@ -89,7 +92,7 @@ int main(void) {
                 }
                 else
                 {
-                    cout << ln;
+                    println;
                     invalid_msg;
                     continue;
                 }
@@ -101,6 +104,9 @@ int main(void) {
             }
             else
             {
+                auto_simulate();
+                save_history();
+
                 clear_screen;
                 exit_msg;
                 return 0;
@@ -228,13 +234,247 @@ int main(void) {
         else if (option == 3)
         {
             clear_screen;
+
+            display_teams();
+
+            int id;
+
+            while (true)
+            {
+                cout << ln << "Enter Team ID: ";
+                cout.flush();
+
+                cin >> id;
+
+                if (cin.fail()) 
+                {
+                    cin.clear();
+                    cin.ignore(1000, '\n');
+        
+                    println;
+                    invalid_msg;
+                    continue;
+                }
+
+                if (id < 1 || id > 20)
+                {
+                    println;
+                    invalid_msg;
+                    continue;
+                }
+                
+                break;
+            }
+
+            clear_screen;
+
+            display_team_info(id);
+
+            bool op_3_back = false;
+            
+            while (true)
+            {
+                cout << "\n1. Go Back to Main Menu\n2. Exit\n\nEnter: ";
+                cout.flush();
+
+                int op_3_choice;
+                cin >> op_3_choice;
+
+                if (cin.fail()) 
+                {
+                    cin.clear();
+                    cin.ignore(1000, '\n');
+        
+                    println;
+                    invalid_msg;
+                    continue;
+                }
+                
+                if (op_3_choice == 1)
+                {
+                    op_3_back = true;
+                    break;
+                }
+                else if (op_3_choice == 2)
+                {
+                    break;
+                }
+                else
+                {
+                    println;
+                    invalid_msg;
+                    continue;
+                }
+            }
+
+            if (op_3_back)
+            {
+                continue;
+            }
+            else
+            {
+                auto_simulate();
+                save_history();
+
+                clear_screen;
+                exit_msg;
+                return 0;
+            }
+            
         }
         else if (option == 4)
         {
             clear_screen;
+
+            int undo_count;
+
+            while (true)
+            {
+                cout << "Enter number of matchdays to undo (1-" << matchday_count << "): ";
+                cout.flush();
+
+                cin >> undo_count;
+
+                if (cin.fail()) 
+                {
+                    cin.clear();
+                    cin.ignore(1000, '\n');
+        
+                    println;
+                    invalid_msg;
+                    continue;
+                }
+
+                if (undo_count < 1 || undo_count > matchday_count)
+                {
+                    println;
+                    invalid_msg;
+                    continue;
+                }
+
+                break;
+            }
+
+            undo_matchdays(undo_count);
+
+            clear_screen;
+            cout << green << "Successfully undid " << undo_count << " matchday(s)!" << reset << ln; 
+
+            bool op_4_back = false;
+            
+            while (true)
+            {
+                cout << "\n1. Go Back to Main Menu\n2. Exit\n\nEnter: ";
+                cout.flush();
+
+                int op_4_choice;
+                cin >> op_4_choice;
+
+                if (cin.fail()) 
+                {
+                    cin.clear();
+                    cin.ignore(1000, '\n');
+        
+                    println;
+                    invalid_msg;
+                    continue;
+                }
+                
+                if (op_4_choice == 1)
+                {
+                    op_4_back = true;
+                    break;
+                }
+                else if (op_4_choice == 2)
+                {
+                    break;
+                }
+                else
+                {
+                    println;
+                    invalid_msg;
+                    continue;
+                }
+            }
+
+            if (op_4_back)
+            {
+                continue;
+            }
+            else
+            {
+                auto_simulate();
+                save_history();
+
+                clear_screen;
+                exit_msg;
+                return 0;
+            }
+
         }
         else if (option == 5)
         {
+            clear_screen;
+
+            display_history();
+
+            bool op_5_back = false;
+            
+            while (true)
+            {
+                cout << "\n1. Go Back to Main Menu\n2. Exit\n\nEnter: ";
+                cout.flush();
+
+                int op_5_choice;
+                cin >> op_5_choice;
+
+                if (cin.fail()) 
+                {
+                    cin.clear();
+                    cin.ignore(1000, '\n');
+        
+                    println;
+                    invalid_msg;
+                    continue;
+                }
+                
+                if (op_5_choice == 1)
+                {
+                    op_5_back = true;
+                    break;
+                }
+                else if (op_5_choice == 2)
+                {
+                    break;
+                }
+                else
+                {
+                    println;
+                    invalid_msg;
+                    continue;
+                }
+            }
+
+            if (op_5_back)
+            {
+                continue;
+            }
+            else
+            {
+                auto_simulate();
+                save_history();
+
+                clear_screen;
+                exit_msg;
+                return 0;
+            }
+
+        }
+        else if (option == 6)
+        {
+            auto_simulate();
+            save_history();
+
             clear_screen;
             exit_msg;
             return 0;
@@ -245,10 +485,7 @@ int main(void) {
         }
         
     }
-
-    clear_screen;
-    exit_msg;
-
+    
     return 0;
 
 }

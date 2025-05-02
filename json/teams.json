@@ -1,0 +1,22 @@
+[
+    { "team_id": 1, "name": "Manchester City", "strength": 10 },
+    { "team_id": 2, "name": "Arsenal", "strength": 9 },
+    { "team_id": 3, "name": "Liverpool", "strength": 9 },
+    { "team_id": 4, "name": "Aston Villa", "strength": 7 },
+    { "team_id": 5, "name": "Tottenham Hotspur", "strength": 7 },
+    { "team_id": 6, "name": "Chelsea", "strength": 6 },
+    { "team_id": 7, "name": "Newcastle United", "strength": 6 },
+    { "team_id": 8, "name": "Manchester United", "strength": 5 },
+    { "team_id": 9, "name": "West Ham United", "strength": 4 },
+    { "team_id": 10, "name": "Crystal Palace", "strength": 4 },
+    { "team_id": 11, "name": "Brighton & Hove Albion", "strength": 4 },
+    { "team_id": 12, "name": "AFC Bournemouth", "strength": 3 },
+    { "team_id": 13, "name": "Fulham", "strength": 3 },
+    { "team_id": 14, "name": "Wolverhampton Wanderers", "strength": 3 },
+    { "team_id": 15, "name": "Everton", "strength": 3 },
+    { "team_id": 16, "name": "Brentford", "strength": 3 },
+    { "team_id": 17, "name": "Nottingham Forest", "strength": 2 },
+    { "team_id": 18, "name": "Luton Town", "strength": 2 },
+    { "team_id": 19, "name": "Burnley", "strength": 1 },
+    { "team_id": 20, "name": "Sheffield United", "strength": 1 }
+]

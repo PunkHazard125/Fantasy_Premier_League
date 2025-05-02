@@ -34,3 +34,18 @@ A Football League Simulation System that simulates the English Premier League (E
 - Teams playing at home will have a slight advantage.
 - Comparator operators will be overloaded to sort teams based on points and goal differences.
 - JSON will be used to store and retrieve team information, fixtures and history of the previous season.
+
+### Main Menu:
+![Standings Screenshot](images/main_menu.png)
+
+### Current Standings:
+![Standings Screenshot](images/standings.png)
+
+### Team Information:
+![Standings Screenshot](images/team_info.png)
+
+### Match Day History:
+![Standings Screenshot](images/matchday_history.png)
+
+### Previous Season Standings:
+![Standings Screenshot](images/previous_season.png)

@@ -1,5 +1,8 @@
-# **Fantasy Premier League**
+# **Fantasy Premier League | Classic**
 ## **Project Concept**
+
+### Attention:
+This version is the same as the main version, except this one does not contain any ANSI color escape codes. This is only of use when a terminal or application does not support ANSI color escape codes.
 
 ### Primary Idea:
 A Football League Simulation System that simulates the English Premier League (EPL) with match days and team standings. It is called Fantasy Premier League because all the matches are simulated with randomized results, meaning the results are not connected to real life. It is also completely unrelated to the official Fantasy Premier League (FPL).
@@ -35,18 +38,3 @@ A Football League Simulation System that simulates the English Premier League (E
 - Comparator operators will be overloaded to sort teams based on points and goal differences.
 - JSON will be used to store and retrieve team information, fixtures and history of the previous season.
 - Fun Fact: If any of the PL BIG 6 teams win the league, a funny message will appear.
-
-### Main Menu:
-![Standings Screenshot](images/main_menu.png)
-
-### Current Standings:
-![Standings Screenshot](images/standings.png)
-
-### Team Information:
-![Standings Screenshot](images/team_info.png)
-
-### Match Day History:
-![Standings Screenshot](images/matchday_history.png)
-
-### Previous Season Standings:
-![Standings Screenshot](images/previous_season.png)

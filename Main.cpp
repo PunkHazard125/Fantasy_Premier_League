@@ -34,8 +34,9 @@ int main(void) {
         cout << "2. Simulate the League\n";
         cout << "3. View Team Information\n";
         cout << "4. Undo Matchday(s)\n";
-        cout << "5. View Standings of Previous Season\n";
-        cout << "6. Exit\n\n";
+        cout << "5. View Matchday History\n";
+        cout << "6. View Standings of Previous Season\n";
+        cout << "7. Exit\n\n";
 
         cout << "Select an option from above: ";
         cout.flush();
@@ -415,6 +416,140 @@ int main(void) {
         {
             clear_screen;
 
+            int op_5_choice;
+            bool op_5_back = false;
+
+            if (matchday_count == 0)
+            {
+                cout << red <<"Season has not started yet! No history to fetch.\n" << reset;
+
+                while (true)
+                {
+                    cout << "\n1. Go Back to Main Menu\n2. Exit\n\nEnter: ";
+                    cout.flush();
+
+                    cin >> op_5_choice;
+
+                    if (cin.fail()) 
+                    {
+                        cin.clear();
+                        cin.ignore(1000, '\n');
+            
+                        clear_screen;
+                        invalid_msg;
+                        continue;
+                    }
+                    
+                    if (op_5_choice == 1)
+                    {
+                        op_5_back = true;
+                        break;
+                    }
+                    else if (op_5_choice == 2)
+                    {
+                        auto_simulate();
+                        save_history();
+
+                        clear_screen;
+                        exit_msg;
+                        return 0;
+                    }
+                    else
+                    {
+                        clear_screen;
+                        invalid_msg;
+                        continue;
+                    }
+                }
+                
+                if (op_5_back)
+                {
+                    continue;
+                }
+            }
+
+            int day;
+    
+            while (true)
+            {
+                cout << "Enter the matchday number to see history (1-"
+                << matchday_count << "): ";
+                cout.flush();
+        
+                cin >> day;
+        
+                if (cin.fail()) 
+                {
+                    cin.clear();
+                    cin.ignore(1000, '\n');
+        
+                    clear_screen;
+                    invalid_msg;
+                    continue;
+                }
+        
+                if (day < 1 || day > matchday_count)
+                {
+                    clear_screen;
+                    invalid_msg;
+                    continue;
+                }
+                else
+                {
+                    break;
+                }
+            }
+
+            display_matchday(day);
+
+            while (true)
+            {
+                cout << "\n1. Go Back to Main Menu\n2. Exit\n\nEnter: ";
+                cout.flush();
+
+                cin >> op_5_choice;
+
+                if (cin.fail()) 
+                {
+                    cin.clear();
+                    cin.ignore(1000, '\n');
+        
+                    clear_screen;
+                    invalid_msg;
+                    continue;
+                }
+                
+                if (op_5_choice == 1)
+                {
+                    op_5_back = true;
+                    break;
+                }
+                else if (op_5_choice == 2)
+                {
+                    auto_simulate();
+                    save_history();
+
+                    clear_screen;
+                    exit_msg;
+                    return 0;
+                }
+                else
+                {
+                    clear_screen;
+                    invalid_msg;
+                    continue;
+                }
+            }
+            
+            if (op_5_back)
+            {
+                continue;
+            }
+        }
+        else if (option == 6)
+        {
+            clear_screen;
+
             display_history();
 
             bool op_5_back = false;
@@ -469,7 +604,7 @@ int main(void) {
             }
 
         }
-        else if (option == 6)
+        else if (option == 7)
         {
             auto_simulate();
             save_history();

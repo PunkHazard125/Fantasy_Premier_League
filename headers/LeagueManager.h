@@ -29,6 +29,8 @@ namespace League {
     inline ArrayList<Team> teams;
     inline ArrayList<Team> standings;
     inline ArrayList<Team> history;
+    inline ArrayList<Match> match_history;
+
     inline Deque<Match> fixtures;
     inline Stack<Match> results;
 
@@ -249,7 +251,7 @@ namespace League {
         int strength_a = teams[current.get_team_a() - 1].get_strength();
         int strength_b = teams[current.get_team_b() - 1].get_strength();
     
-        int bias_a = rand() % (strength_a + 1);
+        int bias_a = rand() % (strength_a + 3);
         int bias_b = rand() % (strength_b + 1);
     
         int score_a = (rand() % 3) + bias_a;
@@ -303,6 +305,7 @@ namespace League {
             simulate_match(current);
     
             results.push(current);
+            match_history.push_back(current);
     
             if (current.get_score_a() > current.get_score_b())
             {
@@ -337,6 +340,7 @@ namespace League {
         for (int i = 0; i < (undo_count * 10); i++)
         {
             Match current = results.pop();
+            match_history.pop_back();
 
             if (current.get_score_a() > current.get_score_b())
             {
@@ -500,6 +504,29 @@ namespace League {
         matchday_count = 38;
         standings = teams;
         standings.sort(true);
+
+    }
+
+    inline void display_matchday(int day) {
+
+        clear_screen;
+
+        cout << "==========================================================\n";
+        cout << blue << "                        Matchday "
+        << day << "            \n" << reset;
+        cout << "==========================================================\n";
+
+        for (int i = (day - 1) * 10; i < (((day - 1) * 10) + 10); i++)
+        {
+            cout << right
+            << setw(23) << teams[match_history[i].get_team_a() - 1].get_name()
+            << setw(5) << " " << match_history[i].get_score_a() << "-"
+            << match_history[i].get_score_b() << " "
+            << "    " << teams[match_history[i].get_team_b() - 1].get_name()
+            << reset << endl;
+        }
+        
+        cout << "----------------------------------------------------------\n";
 
     }
 

@@ -251,14 +251,14 @@ namespace League {
         int strength_a = teams[current.get_team_a() - 1].get_strength();
         int strength_b = teams[current.get_team_b() - 1].get_strength();
     
-        int bias_a = rand() % (strength_a + 3);
-        int bias_b = rand() % (strength_b + 1);
+        int bias_a = rand() % ((strength_a / 2) + 2);
+        int bias_b = rand() % ((strength_b / 2) + 1);
     
-        int score_a = (rand() % 3) + bias_a;
-        int score_b = (rand() % 3) + bias_b;
+        int score_a = (rand() % 2) + bias_a;
+        int score_b = (rand() % 2) + bias_b;
     
-        score_a = min(score_a, 8);
-        score_b = min(score_b, 8);
+        score_a = min(score_a, 5);
+        score_b = min(score_b, 5);
     
         current.set_score_a(score_a);
         current.set_score_b(score_b);

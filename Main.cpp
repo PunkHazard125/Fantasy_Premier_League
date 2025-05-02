@@ -26,7 +26,7 @@ int main(void) {
         cout << clear;
         cout << blue;
     
-        cout << setw(52) << right << "//////// Welcome to Fantasy Premier League \\\\\\\\\\\\\\\\" << ln << ln;
+        cout << setw(51) << right << "//////// Welcome to Fantasy Premier League \\\\\\\\\\\\\\\\" << ln << ln;
     
         cout << reset;
 

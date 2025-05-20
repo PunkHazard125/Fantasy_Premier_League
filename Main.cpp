@@ -326,6 +326,62 @@ int main(void) {
         {
             clear_screen;
 
+            bool op_4_back = false;
+
+            if (matchday_count == 0)
+            {
+                cout << red << "Season has not started yet! No match days to undo.\n" << reset;
+
+                while (true)
+                {
+                    cout << "\n1. Go Back to Main Menu\n2. Exit\n\nEnter: ";
+                    cout.flush();
+    
+                    int op_4_choice;
+                    cin >> op_4_choice;
+    
+                    if (cin.fail()) 
+                    {
+                        cin.clear();
+                        cin.ignore(1000, '\n');
+            
+                        println;
+                        invalid_msg;
+                        continue;
+                    }
+                    
+                    if (op_4_choice == 1)
+                    {
+                        op_4_back = true;
+                        break;
+                    }
+                    else if (op_4_choice == 2)
+                    {
+                        break;
+                    }
+                    else
+                    {
+                        println;
+                        invalid_msg;
+                        continue;
+                    }
+                }
+    
+                if (op_4_back)
+                {
+                    continue;
+                }
+                else
+                {
+                    auto_simulate();
+                    save_history();
+    
+                    clear_screen;
+                    exit_msg;
+                    return 0;
+                }
+            }
+
             int undo_count;
 
             while (true)
@@ -359,8 +415,6 @@ int main(void) {
 
             clear_screen;
             cout << green << "Successfully undid " << undo_count << " matchday(s)!" << reset << ln; 
-
-            bool op_4_back = false;
             
             while (true)
             {

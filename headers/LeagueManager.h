@@ -15,6 +15,8 @@ const string blue = "\033[34m";
 const string green = "\033[32m";
 const string red = "\033[31m";
 const string yellow = "\033[33m";
+const string magneta = "\033[35m";
+const string cyan = "\033[36m";
 const string reset = "\033[0m";
 const string clear = "\033[2J\033[1;1H";
 

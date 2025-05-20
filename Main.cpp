@@ -36,7 +36,7 @@ int main(void) {
         cout << "4. Undo Matchday(s)\n";
         cout << "5. View Matchday History\n";
         cout << "6. View Standings of Previous Season\n";
-        cout << "7. Exit\n\n";
+        cout << red << "7. Exit\n\n" << reset;
 
         cout << "Select an option from above: ";
         cout.flush();
